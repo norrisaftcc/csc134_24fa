@@ -40,6 +40,7 @@ int main() {
   cout << "Each apple costs $" << price_per_apple << endl;
   cout << "The total is: $" << total_cost << endl;
 
+
 }
   
   
