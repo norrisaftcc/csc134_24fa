@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 // CSC 134
@@ -46,6 +47,8 @@ int main() {
     profit = customer_price - cost;
 
     // Output
+    // next line requires iomanip
+    cout << setprecision(2) << fixed; 
     cout << "Crate is: " << width << " x " << length << " x " << height << endl;
     cout << "Total volume is: " << volume << " cubic feet." << endl;
     // output the cost, the customer price, and the profit
