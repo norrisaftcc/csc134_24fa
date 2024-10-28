@@ -23,13 +23,13 @@ int main()
     int die1, die2, total;
     int seed; // random seed
     bool is_winner;
-    cout << "Welcome to the craps table." << endl;
+    cout << "Welcome to the 🎲craps table." << endl;
     seed = time(0);
     srand(seed); // seed the RNG
     // play a round of craps
     is_winner = play_round();
     if (is_winner) {
-        cout << "You won!" << endl;
+        cout << "You won!🌟" << endl;
     }
     else {
         cout << "You lost." << endl;
