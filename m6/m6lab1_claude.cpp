@@ -17,6 +17,15 @@ private:
     Player dealer{"Dealer", 2};
     std::mt19937 rng;
 
+    void displayOdds() {
+        int total = chamber.size();
+        int raspberry = std::count(chamber.begin(), chamber.end(), true);
+        int blanks = total - raspberry;
+        
+        std::cout << "\nCurrent chamber contents: " << total << " shells total - "
+                  << raspberry << " raspberry, " << blanks << " blanks\n";
+    }
+
     void loadChamber() {
         chamber.clear();
         // Load 3 raspberry rounds and 3 blanks
@@ -27,6 +36,10 @@ private:
         
         // Shuffle the chamber
         std::shuffle(chamber.begin(), chamber.end(), rng);
+        
+        // Display initial odds
+        std::cout << "\n=== New Round ===\n";
+        displayOdds();
     }
 
     bool fireShot() {
@@ -41,7 +54,7 @@ private:
         std::cout << "\nStatus:\n";
         std::cout << player.name << " HP: " << player.health << "\n";
         std::cout << dealer.name << " HP: " << dealer.health << "\n";
-        std::cout << "Rounds remaining: " << chamber.size() << "\n\n";
+        displayOdds();
     }
 
 public:
@@ -89,6 +102,7 @@ public:
 
                 // Dealer's turn (if still alive)
                 if (dealer.health > 0 && player.health > 0 && !chamber.empty()) {
+                    displayOdds();  // Show odds before dealer's turn
                     std::cout << "\nDealer's turn...\n";
                     // Simple AI: dealer always shoots at player
                     bool isRaspberry = fireShot();
@@ -103,7 +117,7 @@ public:
             }
 
             if (chamber.empty() && player.health > 0 && dealer.health > 0) {
-                std::cout << "\nChamber is empty! Loading new rounds...\n\n";
+                std::cout << "\nChamber is empty! Loading new rounds...\n";
             }
         }
 
