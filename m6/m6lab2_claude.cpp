@@ -6,7 +6,12 @@ const int RED = 1;   // live
 const int BLACK = 0; // blank
 
 int main() {
-    vector<int> chamber = {RED, BLACK, RED};
+    // start with empty vector
+    vector<int> chamber = {};
+
+    chamber.push_back(RED);
+    chamber.push_back(BLACK);
+    chamber.push_back(RED);
     
     for (int round : chamber) {
         if (round == RED) {
